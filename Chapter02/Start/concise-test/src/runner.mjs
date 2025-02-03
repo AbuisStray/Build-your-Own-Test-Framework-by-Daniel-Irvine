@@ -2,7 +2,7 @@ import path from "path";
 import { color } from "./colors.mjs";
 import { pathToFileURL } from "url";
 
-
+// let anyFailures = false;
 let successes = 0;
 let failures = 0;
 
@@ -27,17 +27,29 @@ export const run = async () => {
     )
   );
   process.exit(
+    // anyFailures? exitCodes.failures: exitCodes.ok
     failures !== 0 ? exitCodes.failures : exitCodes.ok
   );
 };
 
 export const it = (name, body) => {
-  try {
+  try{
     body();
-    successes++;
-  } catch (e) {
-    console.error(color(`  <red>✗</red> ${name}`));
+  }catch(e){
+    console.error(color(`<red>${name}</red>`));
     console.error(e);
+    // anyFailures = true;
     failures++;
-  }
+   }
 };
+
+// export const it = (name, body) => {
+//   try {
+//     body();
+//     successes++;
+//   } catch (e) {
+//     console.error(color(`  <red>✗</red> ${name}`));
+//     console.error(e);
+//     failures++;
+//   }
+// };

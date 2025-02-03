@@ -4,7 +4,8 @@
   "description": "An example codebase that's used in the book Build Your Own Test Framework",
   "main": "index.mjs",
   "scripts": {
-    "test": "concise-test"
+    "test": "concise-test",
+    "desc-plot": "node test/desc-plot.mjs"
   },
   "type": "module",
   "prettier": {
